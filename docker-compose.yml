@@ -1,0 +1,59 @@
+version: "3.5"
+
+services:
+
+##56002 - db
+  postgresdb:
+    image: postgres:12
+    ports:
+      - "56002:5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgres/data
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "teamsManagement"
+    container_name: db
+    networks: 
+      - teamsManagement
+
+##56003 - db-pgadmin
+  dbpgadmin:
+    image: dpage/pgadmin4:4.15
+    ports:
+      - "56003:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@teamsmanagement"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    container_name: pgadmin
+    volumes:
+      - pg_volume:/var/lib/pgadmin
+    networks: 
+      - teamsManagement
+
+##56101 - teamsManagement
+  teamsManagement:
+    image: teamsManagement/teamsManagement
+    build:
+      context: ./../teamsManagement
+      dockerfile: ./Dockerfile
+    container_name: teamsManagement
+    ports:
+      - '56101:5000'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    networks:
+      - teamsManagement
+    depends_on:
+      - postgresdb
+    restart: 
+      on-failure
+
+networks:
+  teamsManagement:
+    name: teamsManagement-network
+
+volumes:
+  db_volume:
+  pg_volume:
