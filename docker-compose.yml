@@ -13,10 +13,10 @@ services:
     environment:
       POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "admin"
-      POSTGRES_DB: "teamsManagement"
+      POSTGRES_DB: "teamsmanagement"
     container_name: db
     networks: 
-      - teamsManagement
+      - teamsmanagement
 
 ##56003 - db-pgadmin
   dbpgadmin:
@@ -30,29 +30,29 @@ services:
     volumes:
       - pg_volume:/var/lib/pgadmin
     networks: 
-      - teamsManagement
+      - teamsmanagement
 
-##56101 - teamsManagement
-  teamsManagement:
-    image: teamsManagement/teamsManagement
+##56101 - teamsmanagement
+  teamsmanagement:
+    image: teamsmanagement/teamsmanagement
     build:
-      context: ./../teamsManagement
+      context: ./../teamsmanagement
       dockerfile: ./Dockerfile
-    container_name: teamsManagement
+    container_name: teamsmanagement
     ports:
       - '56101:5000'
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
     networks:
-      - teamsManagement
+      - teamsmanagement
     depends_on:
       - postgresdb
     restart: 
       on-failure
 
 networks:
-  teamsManagement:
-    name: teamsManagement-network
+  teamsmanagement:
+    name: teamsmanagement-network
 
 volumes:
   db_volume:

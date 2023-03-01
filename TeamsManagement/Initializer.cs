@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TeamsManagement.Data;
+using TeamsManagement.Items.Entities;
 
 namespace TeamsManagement
 {
@@ -29,30 +30,28 @@ namespace TeamsManagement
 
             if (db != null)
             {
-                //Random rnd = new Random();
+                List<Team> teams = new List<Team>()
+                {
+                    new Team()
+                    {
+                        Id = Guid.NewGuid(),
+                        Country = "Netherlands",
+                        Name = "AFC Ajax",
+                        CreatedOn = DateTime.Now,
+                        Players = new List<Player>()
+                    },
 
-                //var result = new List<DailyRate>();
+                    new Team()
+                    {
+                        Id = Guid.NewGuid(),
+                        Country = "Spain",
+                        Name = "Real Madrid CF",
+                        CreatedOn = DateTime.Now,
+                        Players = new List<Player>()
+                    }
+                };
 
-                //var currencies = Enum.GetNames(typeof(Codes)).ToList();
-
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    foreach (var currency in currencies)
-                //    {
-                //        result.Add(new DailyRate()
-                //        {
-                //            Code = currency,
-                //            CreatedOn = new DateTime(2021, 10, 19 + i, 10, 0, 0),
-                //            CurrencyName = $"DUMMY - {currency}",
-                //            Id = Guid.NewGuid(),
-                //            Name = $"DUMMY - {currency}",
-                //            Rate = rnd.Next(200, 250),
-                //            UpdatedOn = new DateTime(2021, 10, 19 + i, 10, 0, 0),
-                //        });
-                //    }
-                //}
-
-                //db.DailyRates.AddRange(result);
+                db.Teams.AddRange(teams);
 
                 db.SaveChanges();
             }

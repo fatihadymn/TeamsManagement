@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TeamsManagement.Items.Entities;
 
 namespace TeamsManagement.Data
 {
     public class ApplicationContext : DbContext
     {
-        private readonly string schema = "teamsManagement";
+        private readonly string schema = "teams_management";
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -19,6 +20,7 @@ namespace TeamsManagement.Data
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataIdentifier).Assembly);
         }
 
-        //public DbSet<DailyRate> DailyRates { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Player> Players { get; set; }
     }
 }
