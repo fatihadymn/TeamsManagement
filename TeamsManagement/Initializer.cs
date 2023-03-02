@@ -20,7 +20,7 @@ namespace TeamsManagement
             }
         }
 
-        public static void InitializeCurrencies(IApplicationBuilder application)
+        public static void InitializeTeamsAndPlayers(IApplicationBuilder application)
         {
             var serviceScope = application.ApplicationServices.CreateScope();
 

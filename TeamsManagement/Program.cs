@@ -43,7 +43,7 @@ if (app.Environment.EnvironmentName == "Docker")
 {
     Initializer.InitializeDatabase(app);
 
-    Initializer.InitializeCurrencies(app);
+    Initializer.InitializeTeamsAndPlayers(app);
 }
 
 // Configure the HTTP request pipeline.
