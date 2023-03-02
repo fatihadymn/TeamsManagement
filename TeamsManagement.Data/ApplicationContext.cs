@@ -5,7 +5,7 @@ namespace TeamsManagement.Data
 {
     public class ApplicationContext : DbContext
     {
-        private readonly string schema = "teams_management";
+        private readonly string schema = "TeamsManagement";
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {

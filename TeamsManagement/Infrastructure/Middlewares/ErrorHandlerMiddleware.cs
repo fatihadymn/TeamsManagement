@@ -47,10 +47,10 @@ namespace TeamsManagement.Infrastructure.Middlewares
             {
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                response = new
+                response = new ErrorModel()
                 {
-                    message = exception.Message,
-                    exception = exception.ToString()
+                    Message = exception.Message,
+                    Detail = exception.ToString()
                 };
             }
 

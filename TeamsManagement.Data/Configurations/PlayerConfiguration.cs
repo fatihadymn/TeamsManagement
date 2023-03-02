@@ -4,27 +4,29 @@ using TeamsManagement.Items.Entities;
 
 namespace TeamsManagement.Data.Configurations
 {
-    public class PlayerConfiguration : IEntityTypeConfiguration<Player>
+    public class PlayerConfiguration : BaseEntityConfiguration<Player>
     {
-        public void Configure(EntityTypeBuilder<Player> builder)
+        public override void Configure(EntityTypeBuilder<Player> builder)
         {
+            base.Configure(builder);
+
+            builder.ToTable("Players");
+
             builder.Property(x => x.Name)
-                   .HasColumnName("name")
                    .HasColumnType("varchar")
                    .IsRequired();
 
             builder.Property(x => x.Height)
-                   .HasColumnName("height")
                    .IsRequired();
 
             builder.Property(x => x.DateOfBirth)
                    .HasColumnType("timestamp")
-                   .HasColumnName("date_of_birth")
                    .IsRequired();
 
             builder.HasOne(x => x.Team)
                    .WithMany(x => x.Players)
-                   .HasForeignKey(x => x.TeamId);
+                   .HasForeignKey(x => x.TeamId)
+                   .IsRequired(false);
         }
     }
 }

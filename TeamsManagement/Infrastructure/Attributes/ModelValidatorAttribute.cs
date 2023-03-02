@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using TeamsManagement.Items.Exceptions;
 
 namespace TeamsManagement.Infrastructure.Attributes
 {
@@ -26,9 +27,9 @@ namespace TeamsManagement.Infrastructure.Attributes
 
                 _logger.LogWarning($"Model is not valid. {firstMessage?.Message}");
 
-                context.Result = new BadRequestObjectResult(new
+                context.Result = new BadRequestObjectResult(new ErrorModel()
                 {
-                    message = firstMessage?.Message
+                    Message = firstMessage?.Message,
                 });
             }
         }

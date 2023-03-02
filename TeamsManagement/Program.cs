@@ -38,11 +38,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseSwaggerCustom();
 
+
 if (app.Environment.EnvironmentName == "Docker")
 {
     Initializer.InitializeDatabase(app);
 
-    //Initializer.InitializeCurrencies(app);
+    Initializer.InitializeCurrencies(app);
 }
 
 // Configure the HTTP request pipeline.

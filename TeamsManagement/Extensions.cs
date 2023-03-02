@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 using TeamsManagement.Core.Services;
 using TeamsManagement.Data;
 using TeamsManagement.Infrastructure.Attributes;
@@ -100,6 +101,9 @@ namespace TeamsManagement
             return services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(options?.Version, new OpenApiInfo { Title = options?.Title, Version = options?.Version });
+
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
         }
 
@@ -126,7 +130,7 @@ namespace TeamsManagement
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connectionString, x =>
             {
                 x.MigrationsAssembly(typeof(DataIdentifier).Namespace);
-                x.MigrationsHistoryTable("ef_migrations", "public");
+                x.MigrationsHistoryTable("_Migrations", "TeamsManagement");
             }));
 
             services.AddScoped(typeof(DbContext), typeof(ApplicationContext));
