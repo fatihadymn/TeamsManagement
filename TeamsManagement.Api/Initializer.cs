@@ -4,7 +4,7 @@ using TeamsManagement.Items.Entities;
 
 namespace TeamsManagement.Api
 {
-    public class Initializer
+    public static class Initializer
     {
         public static void InitializeDatabase(IApplicationBuilder application)
         {
