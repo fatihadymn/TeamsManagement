@@ -1,8 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Logging;
-using Moq;
 using TeamsManagement.Core.Services;
 using TeamsManagement.Data;
 using TeamsManagement.Items.Entities;

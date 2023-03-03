@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -47,13 +46,7 @@ namespace TeamsManagement.Api
 
         public static void AddValidators(this IMvcBuilder builder, Type validatorsAssemblyType)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            builder.AddFluentValidation(x =>
-            {
-                x.RegisterValidatorsFromAssembly(validatorsAssemblyType.Assembly);
-                x.LocalizationEnabled = true;
-            });
-#pragma warning restore CS0618 // Type or member is obsolete
+            builder.Services.AddValidatorsFromAssembly(validatorsAssemblyType.Assembly);
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -67,9 +60,9 @@ namespace TeamsManagement.Api
                                                                 })
                                                                 .FirstOrDefault();
 
-                    return new BadRequestObjectResult(new
+                    return new BadRequestObjectResult(new ErrorModel()
                     {
-                        firstMessage?.Message
+                        Message = firstMessage?.Message
                     });
                 };
             });
