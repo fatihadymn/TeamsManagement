@@ -14,7 +14,6 @@ namespace TeamsManagement.Test
     {
         private readonly DbContextOptions<ApplicationContext> _contextOptions;
         private readonly IMapper _mapper;
-        private readonly ILogger<TeamService> _logger;
 
         public TeamServiceTests()
         {
@@ -60,16 +59,13 @@ namespace TeamsManagement.Test
                 cfg.AddProfile<PlayerProfile>();
             });
             _mapper = config.CreateMapper();
-
-            var mock = new Mock<ILogger<TeamService>>();
-            _logger = mock.Object;
         }
 
         [Fact]
         public async Task TeamService_GetAllTeams()
         {
             using var context = new ApplicationContext(_contextOptions);
-            var service = new TeamService(context, _logger, _mapper);
+            var service = new TeamService(context, _mapper);
 
             var teams = await service.GetAllTeamsAsync();
 
@@ -82,7 +78,7 @@ namespace TeamsManagement.Test
         public async Task TeamService_GetAllTeamPlayers()
         {
             using var context = new ApplicationContext(_contextOptions);
-            var service = new TeamService(context, _logger, _mapper);
+            var service = new TeamService(context, _mapper);
 
             var teams = await service.GetAllTeamsAsync();
             var teamPlayers = await service.GetAllTeamPlayersAsync(new(teams.FirstOrDefault()!.Id));

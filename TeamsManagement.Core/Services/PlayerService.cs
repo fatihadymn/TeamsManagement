@@ -12,13 +12,11 @@ namespace TeamsManagement.Core.Services
     public class PlayerService : ServiceBase, IPlayerService
     {
         private readonly ApplicationContext _dbContext;
-        private readonly ILogger<PlayerService> _logger;
         private readonly IMapper _mapper;
 
-        public PlayerService(ApplicationContext dbContext, ILogger<PlayerService> logger, IMapper mapper)
+        public PlayerService(ApplicationContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _logger = logger;
             _mapper = mapper;
         }
 
@@ -33,9 +31,7 @@ namespace TeamsManagement.Core.Services
 
             if (result is null)
             {
-                _logger.LogError($"Player not found with Id:{request.PlayerId}");
-
-                throw new BusinessException("Player not found");
+                throw new BusinessException($"Player not found with Id:{request.PlayerId}");
             }
 
             return _mapper.Map<GetSinglePlayerResponse>(result);
@@ -49,7 +45,6 @@ namespace TeamsManagement.Core.Services
 
                 if (!isTeamExist)
                 {
-                    _logger.LogError("Team does not exist to create player");
                     throw new BusinessException("Team does not exist to create player");
                 }
             }
@@ -72,7 +67,6 @@ namespace TeamsManagement.Core.Services
 
             if (player is null)
             {
-                _logger.LogError("Player does not exist to update player");
                 throw new BusinessException("Player does not exist to update player");
             }
 
@@ -91,7 +85,6 @@ namespace TeamsManagement.Core.Services
 
                 if (!isTeamExist)
                 {
-                    _logger.LogError("Team does not exist to update player team");
                     throw new BusinessException("Team does not exist to update player team");
                 }
             }
@@ -100,7 +93,6 @@ namespace TeamsManagement.Core.Services
 
             if (player is null)
             {
-                _logger.LogError("Player does not exist to update player team");
                 throw new BusinessException("Player does not exist to update player team");
             }
 

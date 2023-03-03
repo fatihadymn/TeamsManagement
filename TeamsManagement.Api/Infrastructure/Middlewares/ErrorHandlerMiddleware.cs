@@ -23,7 +23,15 @@ namespace TeamsManagement.Api.Infrastructure.Middlewares
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, exception.Message);
+                if (exception is BusinessException)
+                {
+                    _logger.LogError(exception.Message);
+                }
+                else
+                {
+                    _logger.LogError(exception, exception.Message);
+                }
+
                 await HandleErrorAsync(context, exception);
             }
         }
