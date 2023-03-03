@@ -37,7 +37,7 @@ if (app.Environment.IsDevelopment())
 app.UseSwaggerCustom();
 
 
-if (app.Environment.EnvironmentName == "Docker")
+if (app.Environment.EnvironmentName is "Docker")
 {
     Initializer.InitializeDatabase(app);
 

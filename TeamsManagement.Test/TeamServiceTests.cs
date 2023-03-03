@@ -68,7 +68,7 @@ namespace TeamsManagement.Test
         [Fact]
         public async Task TeamService_GetAllTeams()
         {
-            using var context = CreateContext();
+            using var context = new ApplicationContext(_contextOptions);
             var service = new TeamService(context, _logger, _mapper);
 
             var teams = await service.GetAllTeamsAsync();
@@ -81,7 +81,7 @@ namespace TeamsManagement.Test
         [Fact]
         public async Task TeamService_GetAllTeamPlayers()
         {
-            using var context = CreateContext();
+            using var context = new ApplicationContext(_contextOptions);
             var service = new TeamService(context, _logger, _mapper);
 
             var teams = await service.GetAllTeamsAsync();
@@ -91,11 +91,5 @@ namespace TeamsManagement.Test
             Assert.NotEmpty(teamPlayers.Players);
             Assert.Single(teamPlayers.Players);
         }
-
-        ApplicationContext CreateContext() => new ApplicationContext(_contextOptions, (context, modelBuilder) =>
-        {
-            modelBuilder.Entity<Team>()
-                .ToInMemoryQuery(() => context.Teams.Select(b => new Team { Country = b.Country, Name = b.Name, Id = b.Id, CreatedOn = b.CreatedOn }));
-        });
     }
 }

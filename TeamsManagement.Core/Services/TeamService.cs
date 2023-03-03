@@ -30,7 +30,7 @@ namespace TeamsManagement.Core.Services
         {
             var result = await _dbContext.Teams.Where(x => x.Id == request.TeamId).Include(x => x.Players).FirstOrDefaultAsync();
 
-            if (result == null)
+            if (result is null)
             {
                 _logger.LogError($"Team not found with Id:{request.TeamId}");
 

@@ -63,7 +63,7 @@ namespace TeamsManagement.Api
                                                                 .SelectMany(v => v.Errors)
                                                                 .Select(v => new
                                                                 {
-                                                                    Message = (!string.IsNullOrEmpty(v.ErrorMessage) || v.Exception == null) ? v.ErrorMessage : v.Exception.Message
+                                                                    Message = (!string.IsNullOrEmpty(v.ErrorMessage) || v.Exception is null) ? v.ErrorMessage : v.Exception.Message
                                                                 })
                                                                 .FirstOrDefault();
 

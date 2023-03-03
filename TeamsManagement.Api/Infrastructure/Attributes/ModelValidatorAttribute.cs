@@ -21,7 +21,7 @@ namespace TeamsManagement.Api.Infrastructure.Attributes
                                                             .SelectMany(x => x.Errors)
                                                             .Select(x => new
                                                             {
-                                                                Message = (!string.IsNullOrEmpty(x.ErrorMessage) || x.Exception == null) ? x.ErrorMessage : x.Exception.Message
+                                                                Message = (!string.IsNullOrEmpty(x.ErrorMessage) || x.Exception is null) ? x.ErrorMessage : x.Exception.Message
                                                             })
                                                             .FirstOrDefault();
 
