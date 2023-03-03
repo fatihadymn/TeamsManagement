@@ -30,7 +30,7 @@ namespace TeamsManagement.Api.Controllers
 
         /// <summary>Get all player in a team.</summary>
         /// <param name="id"></param>
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}/players")]
         [ProducesResponseType(typeof(List<GetAllTeamPlayersResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeam([FromRoute] Guid id)
         {
