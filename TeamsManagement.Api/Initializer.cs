@@ -2,7 +2,7 @@
 using TeamsManagement.Data;
 using TeamsManagement.Items.Entities;
 
-namespace TeamsManagement
+namespace TeamsManagement.Api
 {
     public class Initializer
     {

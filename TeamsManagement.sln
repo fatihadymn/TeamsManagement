@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Api", "TeamsManagement\TeamsManagement.Api.csproj", "{C7B07D16-62E6-4E07-B573-DD169974915B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Core", "TeamsManagement.Core\TeamsManagement.Core.csproj", "{9CF60953-247E-4FB5-A09A-1269223893BB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Data", "TeamsManagement.Data\TeamsManagement.Data.csproj", "{F2191B82-F5C5-46A7-A54C-EC37AA8B7BF4}"
@@ -13,16 +11,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Items", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Test", "TeamsManagement.Test\TeamsManagement.Test.csproj", "{D1654F15-BBEF-4D7B-8312-AAC6412471B1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsManagement.Api", "TeamsManagement.Api\TeamsManagement.Api.csproj", "{C811B72C-B13E-45FB-A5E3-217EA07489E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{EED7CDC9-6832-4F6A-BDC3-FD1D3D49AF59}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C7B07D16-62E6-4E07-B573-DD169974915B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7B07D16-62E6-4E07-B573-DD169974915B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7B07D16-62E6-4E07-B573-DD169974915B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7B07D16-62E6-4E07-B573-DD169974915B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9CF60953-247E-4FB5-A09A-1269223893BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CF60953-247E-4FB5-A09A-1269223893BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF60953-247E-4FB5-A09A-1269223893BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +42,10 @@ Global
 		{D1654F15-BBEF-4D7B-8312-AAC6412471B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1654F15-BBEF-4D7B-8312-AAC6412471B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1654F15-BBEF-4D7B-8312-AAC6412471B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C811B72C-B13E-45FB-A5E3-217EA07489E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C811B72C-B13E-45FB-A5E3-217EA07489E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C811B72C-B13E-45FB-A5E3-217EA07489E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C811B72C-B13E-45FB-A5E3-217EA07489E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

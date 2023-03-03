@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using TeamsManagement;
+using TeamsManagement.Api;
 using TeamsManagement.Core;
 using TeamsManagement.Items;
 

@@ -6,7 +6,7 @@ using TeamsManagement.Items.Models.Responses;
 
 namespace TeamsManagement.Api.Controllers
 {
-    [Route("api/team_management/v1/teams")]
+    [Route("api/team-management/v1/teams")]
     [ApiController]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]

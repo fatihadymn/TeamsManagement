@@ -2,17 +2,16 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using TeamsManagement.Api.Infrastructure.Attributes;
+using TeamsManagement.Api.Infrastructure.Middlewares;
+using TeamsManagement.Api.Infrastructure.Swagger;
 using TeamsManagement.Core.Services;
 using TeamsManagement.Data;
-using TeamsManagement.Infrastructure.Attributes;
-using TeamsManagement.Infrastructure.Middlewares;
-using TeamsManagement.Infrastructure.Swagger;
 using TeamsManagement.Items.Exceptions;
 
-namespace TeamsManagement
+namespace TeamsManagement.Api
 {
     public static class Extensions
     {
@@ -37,7 +36,7 @@ namespace TeamsManagement
 
             foreach (var repository in repositories)
             {
-                var repositoryType = repository.GetInterfaces().Where(x => x.Name.Contains(repository.Name)).FirstOrDefault() ?? 
+                var repositoryType = repository.GetInterfaces().Where(x => x.Name.Contains(repository.Name)).FirstOrDefault() ??
                                      throw new BusinessException($"Base class did not found for type: {repository.FullName}", 500);
 
                 services.AddTransient(repositoryType, repository);

@@ -5,9 +5,9 @@ using TeamsManagement.Items.Exceptions;
 using TeamsManagement.Items.Models.Requests;
 using TeamsManagement.Items.Models.Responses;
 
-namespace TeamsManagement.Controllers
+namespace TeamsManagement.Api.Controllers
 {
-    [Route("api/team_management/v1/players")]
+    [Route("api/team-management/v1/players")]
     [ApiController]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]

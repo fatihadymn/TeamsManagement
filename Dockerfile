@@ -7,10 +7,10 @@ EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["TeamsManagement/TeamsManagement.Api.csproj", "TeamsManagement/"]
-RUN dotnet restore "TeamsManagement/TeamsManagement.Api.csproj"
+COPY ["TeamsManagement.Api/TeamsManagement.Api.csproj", "TeamsManagement.Api/"]
+RUN dotnet restore "TeamsManagement.Api/TeamsManagement.Api.csproj"
 COPY . .
-WORKDIR "/src/TeamsManagement"
+WORKDIR "/src/TeamsManagement.Api"
 RUN dotnet build "TeamsManagement.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

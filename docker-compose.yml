@@ -34,9 +34,9 @@ services:
 
 ##56101 - teamsmanagement
   teamsmanagement:
-    image: teamsmanagement/teamsmanagement
+    image: teamsmanagement/teamsmanagement.api
     build:
-      context: ./../teamsmanagement
+      context: ./
       dockerfile: ./Dockerfile
     container_name: teamsmanagement
     ports:

@@ -24,8 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TeamsManagement.Core\TeamsManagement.Core.csproj" />
     <ProjectReference Include="..\TeamsManagement.Data\TeamsManagement.Data.csproj" />
-    <ProjectReference Include="..\TeamsManagement\TeamsManagement.Api.csproj" />
+    <ProjectReference Include="..\TeamsManagement.Items\TeamsManagement.Items.csproj" />
   </ItemGroup>
 
 </Project>

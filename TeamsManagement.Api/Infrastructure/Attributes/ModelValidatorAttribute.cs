@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using TeamsManagement.Items.Exceptions;
 
-namespace TeamsManagement.Infrastructure.Attributes
+namespace TeamsManagement.Api.Infrastructure.Attributes
 {
     public class ModelValidatorAttribute : ActionFilterAttribute
     {

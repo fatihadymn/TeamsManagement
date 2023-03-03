@@ -2,7 +2,7 @@
 using System.Text.Json;
 using TeamsManagement.Items.Exceptions;
 
-namespace TeamsManagement.Infrastructure.Middlewares
+namespace TeamsManagement.Api.Infrastructure.Middlewares
 {
     public class ErrorHandlerMiddleware
     {

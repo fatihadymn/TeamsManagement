@@ -1,4 +1,4 @@
-﻿namespace TeamsManagement.Infrastructure.Swagger
+﻿namespace TeamsManagement.Api.Infrastructure.Swagger
 {
     public class SwaggerOptions
     {
