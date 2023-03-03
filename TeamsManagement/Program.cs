@@ -5,7 +5,6 @@ using TeamsManagement.Core;
 using TeamsManagement.Items;
 
 var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -21,7 +20,6 @@ builder.Services.AddSwaggerCustom();
 builder.Services.ConfigureDatabase(builder.Configuration.GetConnectionString("PgSql"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 

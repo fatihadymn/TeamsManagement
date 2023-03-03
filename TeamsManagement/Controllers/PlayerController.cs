@@ -21,7 +21,7 @@ namespace TeamsManagement.Controllers
             _playerService = playerService;
         }
 
-        /// <summary>Get all teams.</summary>
+        /// <summary>Get all players.</summary>
         [HttpGet]
         [ProducesResponseType(typeof(List<GetAllPlayersResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllPlayers()

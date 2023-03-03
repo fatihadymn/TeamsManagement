@@ -37,12 +37,8 @@ namespace TeamsManagement
 
             foreach (var repository in repositories)
             {
-                var repositoryType = repository.GetInterfaces().Where(x => x.Name.Contains(repository.Name)).FirstOrDefault();
-
-                if (repositoryType == null)
-                {
-                    throw new BusinessException($"Base class did not found for type: {repository.FullName}", 500);
-                }
+                var repositoryType = repository.GetInterfaces().Where(x => x.Name.Contains(repository.Name)).FirstOrDefault() ?? 
+                                     throw new BusinessException($"Base class did not found for type: {repository.FullName}", 500);
 
                 services.AddTransient(repositoryType, repository);
             }
