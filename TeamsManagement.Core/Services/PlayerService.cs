@@ -73,6 +73,7 @@ namespace TeamsManagement.Core.Services
             player.Name = request.Name;
             player.Height = request.Height;
             player.DateOfBirth = request.DateOfBirth;
+            player.UpdatedOn = DateTime.Now;
 
             await _dbContext.SaveChangesAsync();
         }
@@ -97,6 +98,7 @@ namespace TeamsManagement.Core.Services
             }
 
             player.TeamId = request.TeamId;
+            player.UpdatedOn = DateTime.Now;
 
             await _dbContext.SaveChangesAsync();
         }

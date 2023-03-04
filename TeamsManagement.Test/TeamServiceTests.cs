@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using TeamsManagement.Api;
 using TeamsManagement.Core.Services;
 using TeamsManagement.Data;
-using TeamsManagement.Items.Entities;
 using TeamsManagement.Items.Mappers;
 
 namespace TeamsManagement.Test
@@ -22,34 +22,7 @@ namespace TeamsManagement.Test
 
             using var context = new ApplicationContext(_contextOptions);
 
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-
-            context.AddRange(
-                new Team
-                {
-                    Country = "Spain",
-                    Name = "Barcelona",
-                    CreatedOn = DateTime.Now,
-                    Id = Guid.NewGuid(),
-                    Players = new List<Player>()
-                    {
-                        new Player { Name = "test1", DateOfBirth = DateTime.Parse("09.09.1985"), Height=178,Id = Guid.NewGuid(), CreatedOn=DateTime.Now }
-                    }
-                },
-                new Team
-                {
-                    Country = "France",
-                    Name = "Paris SG",
-                    CreatedOn = DateTime.Now,
-                    Id = Guid.NewGuid(),
-                    Players = new List<Player>()
-                    {
-                        new Player { Name = "test2", DateOfBirth = DateTime.Parse("09.09.1990"), Height=180,Id = Guid.NewGuid(), CreatedOn=DateTime.Now }
-                    }
-                });
-
-            context.SaveChanges();
+            Initializer.PrepareTestDatas(context);
 
             var config = new MapperConfiguration(cfg =>
             {

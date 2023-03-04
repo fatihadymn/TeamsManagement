@@ -20,6 +20,41 @@ namespace TeamsManagement.Api
             }
         }
 
+        public static void PrepareTestDatas(ApplicationContext context)
+        {
+            if (context is not null)
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+
+                context.AddRange(
+                    new Team
+                    {
+                        Country = "Spain",
+                        Name = "Barcelona",
+                        CreatedOn = DateTime.Now,
+                        Id = Guid.NewGuid(),
+                        Players = new List<Player>()
+                        {
+                        new Player { Name = "Test Player1", DateOfBirth = DateTime.Parse("09.09.1985"), Height=178,Id = Guid.NewGuid(), CreatedOn=DateTime.Now }
+                        }
+                    },
+                    new Team
+                    {
+                        Country = "France",
+                        Name = "Paris SG",
+                        CreatedOn = DateTime.Now,
+                        Id = Guid.NewGuid(),
+                        Players = new List<Player>()
+                        {
+                        new Player { Name = "Test Player2", DateOfBirth = DateTime.Parse("09.09.1990"), Height=180,Id = Guid.NewGuid(), CreatedOn=DateTime.Now }
+                        }
+                    });
+
+                context.SaveChanges();
+            }
+        }
+
         public static void InitializeTeamsAndPlayers(IApplicationBuilder application)
         {
             var serviceScope = application.ApplicationServices.CreateScope();
