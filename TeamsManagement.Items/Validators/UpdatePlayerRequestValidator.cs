@@ -16,7 +16,7 @@ namespace TeamsManagement.Items.Validators
                                   .LessThanOrEqualTo(260)
                                   .WithName("Height");
 
-            RuleFor(x => x.DateOfBirth).LessThanOrEqualTo(DateTime.Now)
+            RuleFor(x => x.DateOfBirth).LessThanOrEqualTo(DateTime.Now.Date)
                                        .WithName("Date of Birth");
         }
     }

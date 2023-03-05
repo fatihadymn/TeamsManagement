@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using TeamsManagement.Data;
 using TeamsManagement.Items.Entities;
 using TeamsManagement.Items.Exceptions;
@@ -84,12 +83,12 @@ namespace TeamsManagement.Core.Services
 
             if (player is null)
             {
-                throw new BusinessException("Player does not exist to update player team");
+                throw new BusinessException("Player does not exist to update player's team");
             }
 
             if (player.TeamId == request.TeamId)
             {
-                throw new BusinessException("Player's team is already set");
+                throw new BusinessException("Player's team was already set like this");
             }
 
             if (request.TeamId.HasValue)
@@ -98,7 +97,7 @@ namespace TeamsManagement.Core.Services
 
                 if (!isTeamExist)
                 {
-                    throw new BusinessException("Team does not exist to update player team");
+                    throw new BusinessException("Team does not exist to update player's team");
                 }
             }
 
