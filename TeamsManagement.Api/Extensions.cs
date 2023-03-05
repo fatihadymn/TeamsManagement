@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -8,6 +9,7 @@ using TeamsManagement.Api.Infrastructure.Middlewares;
 using TeamsManagement.Api.Infrastructure.Swagger;
 using TeamsManagement.Core.Services;
 using TeamsManagement.Data;
+using TeamsManagement.Items;
 using TeamsManagement.Items.Exceptions;
 
 namespace TeamsManagement.Api
@@ -44,9 +46,11 @@ namespace TeamsManagement.Api
             return services;
         }
 
-        public static void AddValidators(this IMvcBuilder builder, Type validatorsAssemblyType)
+        public static void AddValidators(this IMvcBuilder builder)
         {
-            builder.Services.AddValidatorsFromAssembly(validatorsAssemblyType.Assembly);
+            builder.Services.AddValidatorsFromAssemblyContaining<ItemIdentifier>();
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddFluentValidationClientsideAdapters();
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
             {

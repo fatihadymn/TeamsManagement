@@ -12,7 +12,7 @@ namespace TeamsManagement.Items.Validators
                                 .MinimumLength(1)
                                 .WithName("Name");
 
-            RuleFor(x => x.Height).GreaterThan(0)
+            RuleFor(x => x.Height).GreaterThan(50)
                                   .LessThanOrEqualTo(260)
                                   .WithName("Height");
 

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersCustom()
-                .AddValidators(typeof(ItemIdentifier));
+                .AddValidators();
 
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(ItemIdentifier)))
                 .AddServices(typeof(CoreIdentifier))
@@ -19,8 +19,8 @@ builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(ItemIdentifier)))
 var app = builder.Build();
 
 app.UseErrorHandler()
-    .UseRouting()
-    .UseSwaggerCustom();
+   .UseRouting()
+   .UseSwaggerCustom();
 
 app.MapControllers();
 

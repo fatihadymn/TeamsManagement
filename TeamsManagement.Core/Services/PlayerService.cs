@@ -80,6 +80,18 @@ namespace TeamsManagement.Core.Services
 
         public async Task UpdatePlayerTeamAsync(UpdatePlayerTeamRequest request)
         {
+            var player = await _dbContext.Players.FirstOrDefaultAsync(x => x.Id == request.PlayerId);
+
+            if (player is null)
+            {
+                throw new BusinessException("Player does not exist to update player team");
+            }
+
+            if (player.TeamId == request.TeamId)
+            {
+                throw new BusinessException("Player's team is already set");
+            }
+
             if (request.TeamId.HasValue)
             {
                 var isTeamExist = await _dbContext.Teams.AnyAsync(x => x.Id == request.TeamId.Value);
@@ -88,13 +100,6 @@ namespace TeamsManagement.Core.Services
                 {
                     throw new BusinessException("Team does not exist to update player team");
                 }
-            }
-
-            var player = await _dbContext.Players.FirstOrDefaultAsync(x => x.Id == request.PlayerId);
-
-            if (player is null)
-            {
-                throw new BusinessException("Player does not exist to update player team");
             }
 
             player.TeamId = request.TeamId;

@@ -1,5 +1,5 @@
 # Teams Management
-Teams Management system provide to manage your teams and players. The project needs PostgreSQL, .Net 7.0. But don't worry about installment steps, there is no necessary to install all parts of these. This project needs only one requirement which is [Docker Desktop](https://www.docker.com/products/docker-desktop).
+Teams Management system provide to managed your teams and players. The project needs PostgreSQL, .Net 7.0. But don't worry about installment steps, there is no necessary to install all parts of these. This project needs only one requirement which is [Docker Desktop](https://www.docker.com/products/docker-desktop) and make sure that the program is working on your system.
 
 ## Tech
 - .Net 7.0
@@ -49,15 +49,17 @@ After all step you will see the TeamsManagement Database on the left and you wil
 
 ## Test
 ### Postman
-I shared a Postman Collection as you see below. You can download this file and import to Postman.
+I shared a Postman Collection as you see below. You can download this file and import to Postman and this file for Postman Runner.
 
 [Postman-Collection](https://drive.google.com/file/d/13dLXLoyXO4aW9HoYVfOICbxGUsg8oNL8/view?usp=sharing)
 
 ![image](https://user-images.githubusercontent.com/38660944/222953515-b7994694-891d-4241-afa9-7d566aab691f.png)
 
 ### Swagger
+You can see swagger with this link [TeamsManagement Swagger](http://localhost:56101/swagger)
+
   ### Team Endpoints
-  
+
   ![image](https://user-images.githubusercontent.com/38660944/222955781-5272f82a-92f6-4ee8-97f5-4849cf798b88.png)
   - This endpoint returns all teams.
 ---------------------
@@ -86,6 +88,6 @@ I shared a Postman Collection as you see below. You can download this file and i
 ## Clear
   When all tests are done, you can use this command below to down everything.
   ```sh
-  docker-compose up --build -d 
+  docker-compose down
   ```
   ![image](https://user-images.githubusercontent.com/38660944/222957932-68aae795-6f5c-4ad7-82af-7fa511ac0310.png)
